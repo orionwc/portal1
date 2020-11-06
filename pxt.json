@@ -5,7 +5,9 @@
         "device": "*",
         "corgio": "*",
         "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.3.1",
-        "color-coded-tilemap": "*"
+        "color-coded-tilemap": "*",
+        "seesaw": "github:adafruit/pxt-seesaw#v0.0.19",
+        "sevenseg": "*"
     },
     "files": [
         "main.blocks",

@@ -116,13 +116,13 @@ function setlevel () {
             2 . . . . . 2 . . 2 
             2 8 3 . . 9 2 . 5 2 
             `)
-        enable_firing_portals = true
         for (let index = 0; index < 1; index++) {
             portal1_updown = -1
             portal2_updown = -1
             portal1_leftright = 1
             portal2_leftright = 1
         }
+        enable_firing_portals = true
     } else if (level == 7) {
         scene.setTileMap(img`
             2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -274,6 +274,8 @@ function setlevel () {
             2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
             `, true)
         enable_firing_portals = false
+        myCounter.setDigitColor(0)
+        myCounter.count = 0
     } else if (level == 9) {
         scene.setTile(10, img`
             6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
@@ -342,8 +344,8 @@ function setlevel () {
         max = 8
         row = 2
         enable_firing_portals = true
-        _3 = true
     } else if (level == 10) {
+        _3 = true
         scene.setTile(10, img`
             6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
             6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
@@ -511,7 +513,7 @@ function setlevel () {
         sc = 0
         sc2 = 5
         row = 2
-        row2 = 17
+        row2 = 22
         scene.setTileMap(img`
             2222222222..............7......2.......72..........f.2222222..........
             3.......................2......2........2..111.....2........2.........
@@ -521,33 +523,34 @@ function setlevel () {
             2.......................22a22222..2222922.2222aaa2.2.2.....2.2...2....
             2.......................7241.....aaaaaaa2.7aaaa212.2.2........2..2....
             2222222222222aa22222222222222222222aaab222222222.2.2.2..2.......22....
-            26666666666666aaaaaaaaaaaaaaaaaaaaaa2aaaaaaaaaaa72.....22..2222222....
+            26666616666666aaaaaaaaaaaaaaaaaaaaaa2aaaaaaaaaaa72.....22..2222222....
             2622222222222222222222222222222222662222222222222222a22222.......2....
             26222222222222222222222222222222222.........2....2.2.2....2222...2....
             26f6666666666666666666666222222222225.......2....2.2.2.....2...2.2....
-            22222222222222222222222262222222222.2.......2....2.2.2.....2..2..2....
-            2.......222222222222222262222222222..2.222222....2.2.2.......2...2....
-            2......................2.2........2..2.2....2....2..........2....2....
-            2......................2.2........2..2.2....2....222a22..2222222.2....
-            2......................2.2........2..2.2....2....2......2..2.....2....
-            2......................2.2........2..2.2....2....2.....2...2....2.....
-            2......................2.2........2..2.2....2....2...2.....2...2......
-            2......................2.2........2..2.2....2....2.2..2....2..2.......
-            2......................2.2........2..2.2....2....222a222..2..2........
-            2......................2.2........2..2.2....2....2.......2..2.........
-            2......................2.2........2..2.2....2....2......2..2..........
-            2......................2.2........2..2.2....2....2.....2...2..........
-            2......................2.2........2..2.2....2....2...2.....2..........
-            2......................2.2........2..2.2....2....222a222..22..........
-            2......................2.2........2..2.2....2....2.1.1...222..........
-            2......................2.2........2.........2....271.1..2..2..........
-            2........................2........2.........2....2..e..2...2..........
+            22222222222222222222222262aaaaaaaa2.2.......2....2.2.2.....2..2..2....
+            2aaaaaaaaaa2aaaaaaaaaaf2622222222a2..2.222222....2.2.2.......2...2....
+            2aaaaaaaaaa2222aa2222222.2......2.2..2.2....2....2..........2....2....
+            2aaaaaaaaaaaaaaa2aaaaaa2.2......2.2..2.2....2....222a22..2222222.2....
+            2aaaaaaaaaaaaaa2aaaaaaa2.2......2.2..2.2....2....2......2..2.....2....
+            2222222aa222222222222222.2......2.2..2.2....2....2.....2...2....2.....
+            2....a22aaaaa..........2.2.....52.2..2.2....2....2...2.....2...2......
+            2....aaa222aa..........2.2..22222.2..2.2....2....2.2..2....2..2.......
+            2....aaaaaa2a..........2.2......2.2..2.2....2....222a222..2..2........
+            2............2.........2.2......2.2..2.2....2....2.......2..2.........
+            2aaaa22222222222222....2.2.222222.2..2.2....2....2......2..2..........
+            2aaa2a.............7...2.2......2.2..2.2....2....2.....2...2..........
+            2aa22a.................2.2......2.2..2.2....2....2...2.....2..........
+            22aaaa.................2.222222.2.2..2.2....2....222a222..22..........
+            2222aa.................2.2......2.2..2.2....2....2.1.1...222..........
+            2aaa2a.................2.2......2.2.........2....271.1..2..2..........
+            2aaaa2.................1.2......1.2.........2....2..e..2...2..........
             22222222222222222222222222222222222...d.....2....22222222222..........
             `)
         portal1_leftright = 0
         portal2_leftright = 0
         portal1_updown = 0
         portal2_updown = -1
+        _4 = true
     } else {
         game.over(true)
     }
@@ -671,6 +674,7 @@ scene.onHitTile(SpriteKind.Player, 7, function (sprite) {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, false)
+    key = true
 })
 scene.onHitTile(SpriteKind.Portal, 15, function (sprite) {
 	
@@ -681,7 +685,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         if (angle >= 360) {
             angle += -360
         }
-        info.setScore(angle)
+        myCounter.count = angle
     }
 })
 scene.onHitTile(SpriteKind.Player, 5, function (sprite) {
@@ -815,24 +819,65 @@ scene.onHitTile(SpriteKind.Player, 15, function (sprite) {
             . . . . . . . . . . . . . . . . 
             `, true)
     } else {
-        scene.setTile(5, img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . 5 . . . . . . . . . 
-            . . . . . . 5 . . . . . . . . . 
-            . . . . . 5 5 5 5 . . . . . . . 
-            . . . . 5 5 5 5 5 5 . . . . . . 
-            . . . 5 5 5 5 5 5 5 5 . . . . . 
-            5 5 5 5 5 5 5 5 5 5 5 5 5 . . . 
-            . 5 5 5 5 5 5 5 5 5 5 5 5 . . . 
-            . . . 5 5 5 5 5 5 5 . . . . . . 
-            . . . . 5 5 5 5 5 5 . . . . . . 
-            . . . 5 5 5 . . 5 5 5 . . . . . 
-            . . 5 5 . . . . . 5 5 5 . . . . 
-            . 5 5 . . . . . . . 5 5 . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, true)
+        if (key) {
+            scene.setTile(7, img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . 5 5 . . . . . . . . . . . . 
+                . 5 . . 5 . . . . . . . 5 . 5 . 
+                5 . . . . 5 . . . . . . 5 . 5 . 
+                5 . . . . . 5 5 5 5 5 5 5 5 5 . 
+                5 . . . . 5 . . . . . . . . . . 
+                . 5 . . 5 . . . . . . . . . . . 
+                . . 5 5 . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, false)
+            tiles.placeOnTile(dog.sprite, tiles.getTileLocation(26, 12))
+        } else {
+            dog.sprite.x += 32
+            scene.setTile(15, img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, true)
+            scene.setTile(5, img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 5 . . . . . . . . . 
+                . . . . . . 5 . . . . . . . . . 
+                . . . . . 5 5 5 5 . . . . . . . 
+                . . . . 5 5 5 5 5 5 . . . . . . 
+                . . . 5 5 5 5 5 5 5 5 . . . . . 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 . . . 
+                . 5 5 5 5 5 5 5 5 5 5 5 5 . . . 
+                . . . 5 5 5 5 5 5 5 . . . . . . 
+                . . . . 5 5 5 5 5 5 . . . . . . 
+                . . . 5 5 5 . . 5 5 5 . . . . . 
+                . . 5 5 . . . . . 5 5 5 . . . . 
+                . 5 5 . . . . . . . 5 5 . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, true)
+        }
     }
 })
 scene.onHitTile(SpriteKind.Player, 1, function (sprite) {
@@ -872,6 +917,7 @@ scene.onHitTile(SpriteKind.Player, 1, function (sprite) {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, true)
+    key = false
     scene.setTile(10, img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -916,13 +962,13 @@ scene.onHitTile(SpriteKind.Player, 1, function (sprite) {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
-            . . 5 5 . . . . . . . . . . . . 
-            . 5 . . 5 . . . . . . . 5 . 5 . 
-            5 . . . . 5 . . . . . . 5 . 5 . 
-            5 . . . . . 5 5 5 5 5 5 5 5 5 . 
-            5 . . . . 5 . . . . . . . . . . 
-            . 5 . . 5 . . . . . . . . . . . 
-            . . 5 5 . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -1005,6 +1051,7 @@ scene.onHitTile(SpriteKind.Portal, 2, function (sprite) {
 let col2 = 0
 let col = 0
 let not = false
+let key = false
 let vel_y = 0
 let vel_x = 0
 let angle = 0
@@ -1024,6 +1071,7 @@ let portal1_updown = 0
 let level = 0
 let enable_portaling = false
 let portal_velocity = 0
+let myCounter: DigitCounter = null
 let portaling = false
 let portal1_next = false
 let portal2: Sprite = null
@@ -1032,6 +1080,7 @@ let dog: Corgio = null
 let enable_firing_portals = false
 let PI = 0
 let instructions_on = false
+let _4 = false
 let _3 = false
 if (game.ask("Intruduction?")) {
     instructions_on = game.ask("Do you want instructions?")
@@ -1127,9 +1176,11 @@ if (game.ask("Intruduction?")) {
         `, SpriteKind.Portal)
     portal1_next = true
     portaling = false
+    myCounter = sevenseg.createCounter(SegmentStyle.Medium, SegmentScale.Half, 3)
     portal_velocity = 100
     scene.cameraFollowSprite(dog.sprite)
 } else {
+    myCounter = sevenseg.createCounter(SegmentStyle.Medium, SegmentScale.Half, 3)
     PI = 3.1415926535
     scene.setTile(2, img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -1211,6 +1262,15 @@ game.onUpdate(function () {
     }
 })
 game.onUpdate(function () {
+    if (enable_firing_portals) {
+        myCounter.y = dog.sprite.y - 32
+        myCounter.x = dog.sprite.x
+        myCounter.setDigitColor(9)
+    } else {
+        myCounter.setDigitColor(0)
+    }
+})
+game.onUpdate(function () {
     if (_3) {
         scene.setTileAt(scene.getTile(col, row), 2)
         scene.setTileAt(scene.getTile(col - 1, row), 0)
@@ -1218,7 +1278,7 @@ game.onUpdate(function () {
     }
 })
 game.onUpdate(function () {
-    if (_3) {
+    if (_4) {
         scene.setTileAt(scene.getTile(col2, row2), 2)
         scene.setTileAt(scene.getTile(col2 - 1, row2), 0)
         scene.setTileAt(scene.getTile(col2 + 1, row2), 0)
@@ -1232,7 +1292,5 @@ game.onUpdateInterval(500 * max2, function () {
 })
 game.onUpdateInterval(500, function () {
     col += 1
-})
-game.onUpdateInterval(500, function () {
     col2 += 1
 })
